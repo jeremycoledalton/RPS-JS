@@ -1,0 +1,61 @@
+// Rock Paper Scissors Excercise
+
+// Function getUserChoice takes a string as a parameter and makes everything lowercase and if it matches rock, paper, or scissor, it will console log the user input. if not it will throw an error message via a printed string
+
+getUserChoice = (userInput) => {
+  userInput = userInput.toLowerCase();
+  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors'){
+    return (userInput);
+  } else if (userInput === 'bomb') {
+    return('BOOM!')
+  } else {
+    return ('Excuse me, the game is "Rock, Paper, Scissors". Please provide an answer that makes sense.')
+  }
+}
+
+//This function generated a random interger 0, 1 or, 2 each are associated with of the three choices and provide the computer choice. 
+
+function getComputerChoice () {
+  let num =  Math.floor(Math.random() * 3 );
+  if (num === 0) {
+    return ('rock');
+  } else if (num === 1) {
+    return ('paper');
+  } else if (num === 2) {
+    return ('scissors');
+  }
+}
+
+//This function holds the conditions of winning over the computer. There is a tie condition and there is a loose condition. 
+
+function determineWinner (userChoice, computerChoice) {
+ if (userChoice === computerChoice) {
+  return 'It\'s a Tie!!'
+ } else if (userChoice === 'rock' && computerChoice === 'scissors') {
+    return ('You win!');
+ } else if (userChoice === 'paper' && computerChoice === 'rock') {
+    return ('You win!');
+ } else if (userChoice === 'scissors' && computerChoice === 'paper') {
+    return('You win!');
+ } else if (userChoice === 'BOOM!') {
+    return('You blew up the game!')
+ } else {
+  return ('Sorry! You loose')
+ }
+}
+
+function playGame(userInput) {
+let userChoice = getUserChoice(userInput);
+console.log (userChoice);
+if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors'){
+  let computerChoice = getComputerChoice();
+  console.log(computerChoice);
+  console.log(determineWinner(userChoice, computerChoice));
+  } else if (userInput === 'bomb') {
+    console.log ('How did you do that?')
+  } else {
+    console.log ('Do you even know how to play this game?')
+  }
+}
+// enter your choice as a string below
+playGame()
